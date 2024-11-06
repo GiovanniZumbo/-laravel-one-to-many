@@ -18,7 +18,7 @@ class ProjectController extends Controller
     public function index(Project $project)
     {
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects', 'project'));
+        return view('admin.projects.index', compact('projects', 'project',));
     }
 
     /**
@@ -38,7 +38,7 @@ class ProjectController extends Controller
     {
 
         $data  = $request->validated();
-        $project  = Project::created($data);
+        $project  = Project::create($data);
         return redirect()->route("admin.projects.index");
     }
 

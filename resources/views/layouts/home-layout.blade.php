@@ -13,6 +13,7 @@
                         <img src="{{ $project->image_url }}" class="card-img-top h-75 object-fit-contain" alt="...">
                         <div class="card-body">
                             <h4>{{ $project->title }}</h4>
+                            <h5>{{ $project->type->name }}</h5>
                             <p class="card-text">{{ $project->description }}</p>
                             @include('partials.buttons')
                         </div>

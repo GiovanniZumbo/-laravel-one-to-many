@@ -23,6 +23,7 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             "title" => ["required", "string", "min:3", "max:255"],
+            "type_id" => ['required', 'string', 'integer', 'exists: categories,id'],
             "description" => ["string", "min:5", "nullable"],
             "image_url" => ["url"],
             "git_url" => ["required", "url"],
