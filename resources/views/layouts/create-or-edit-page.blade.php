@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-8">
-                <form action="@yield('form-action')" method="POST" class="text-light">
+                <form action="{{ route('admin.projects.store', $project) }}" method="POST" class="text-light">
                     @csrf
                     @yield('form-method')
 
@@ -14,6 +14,14 @@
                         <label for="title" class="form-label">Title</label>
                         <input type="title" class="form-control" id="title" name="title"
                             value="{{ old('title'), $project->title }}">
+                    </div>
+                    <div class="mb-4">
+                        <label for="type" class="form-label">Type</label>
+                        <select name="type_id" id="type" class="form-control">
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-4">
                         <label for="description" class="form-label">Description</label>

@@ -4,7 +4,7 @@
 @endsection
 
 @section('form-action')
-    {{ route('admin.projects.update', $project) }}
+    'admin.projects.update'
 @endsection
 
 @section('form-method')

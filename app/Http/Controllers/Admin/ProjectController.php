@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Process;
 
@@ -23,9 +24,11 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view('admin.projects.create');
+        $projects = Project::all();
+        $types = Type::all();
+        return view('admin.projects.create', compact('project', 'types'));
     }
 
     /**
@@ -54,7 +57,8 @@ class ProjectController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id);
-        return view('admin.projects.edit', compact("project"));
+        $types = Type::all();
+        return view('admin.projects.edit', compact("project", "types"));
     }
 
     /**
